@@ -23,12 +23,12 @@ class WhereTest < Minitest::Test
     assert_equal [@boris, @wolf], @fixtures.where(:rank => 4)
   end
 
-  def test_with_with_multiple_criteria
-    assert_equal [@wolf], @fixtures.where(:rank => 4, :quote => /get/)
-  end
+  # def test_with_with_multiple_criteria
+  #   assert_equal [@wolf], @fixtures.where(:rank => 4, :quote => /get/)
+  # end
 
-  def test_with_chain_calls
-    assert_equal [@charles], @fixtures.where(:quote => /if/i).where(:rank => 3)
-  end
+  # def test_with_chain_calls
+  #   assert_equal [@charles], @fixtures.where(:quote => /if/i).where(:rank => 3)
+  # end
 end
 
