@@ -24,5 +24,5 @@ puts "welcome to youtube link generator"
 puts "enter a search term"
 topic = gets.chomp
 system('clear')
-puts "these three videos should be relevant to you."
+puts "these three videos should be relevant:"
 youtube = Youtube.new(topic)

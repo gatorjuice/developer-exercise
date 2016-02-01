@@ -1,12 +1,56 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-                    "http://www.w3.org/TR/html4/loose.dtd">
+  "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js" type="text/javascript"></script>
 </head>
 <body>
+  <section id="quotesapp">
+    <header id="header">
+      <h1>Quotes</h1>
+    </header>
+    <section id="quotes">
+      <ul id="quotes-list">
+        <li id="quote"></li>
+      </ul>
+    </section>
+  </section>
+  <script>
 
+    var app = {};
+
+    app.quote = Backbone.Model.extend({
+      defaults: {
+        source: "",
+        context: "",
+        quote: "",
+        theme: ""
+      }
+    });
+
+
+    app.quoteList = Backbone.Collection.extend({
+      model: app.quote,
+      localStorage: new Store("backbone-quote")
+    });
+
+
+    var quoteListView = Backbone.View.extend({
+      el: '#quotes-list',
+
+      template: _.template("<h3>Hello <%= person %></h3>"),
+      initialize: function(){
+        this.render();
+        $('#quote').text("hello");
+      },
+      // $el - it's a cached jQuery object (el), in which you can use jQuery functions
+      //       to push content. Like the Hello World in this case.
+      
+    });
+    var appView = new quoteListView();
+  </script>
 </body>
 </html>
